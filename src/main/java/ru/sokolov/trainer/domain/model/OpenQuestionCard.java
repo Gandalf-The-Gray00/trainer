@@ -1,12 +1,14 @@
 package ru.sokolov.trainer.domain.model;
 
 public class OpenQuestionCard {
-
+    private final Long id;
     private final String question;
     private final String expectedAnswer;
 
-    // Конструктор, инициализирующий поля
-    public OpenQuestionCard(String question, String expectedAnswer) {
+    public OpenQuestionCard(Long id, String question, String expectedAnswer) {
+        if (id == null || id <= 0) {
+            throw new IllegalArgumentException("ID must be a positive number");
+        }
         if (question == null || question.isEmpty()) {
             throw new IllegalArgumentException("Question cannot be null or empty");
         }
@@ -14,17 +16,24 @@ public class OpenQuestionCard {
             throw new IllegalArgumentException("Expected answer cannot be null or empty");
         }
 
+        this.id = id;
         this.question = question;
         this.expectedAnswer = expectedAnswer;
     }
 
-    // Геттер для поля question
+    public Long getId() {
+        return id;
+    }
+
     public String getQuestion() {
         return question;
     }
 
-    // Метод для проверки ответа
+    public String getExpectedAnswer() {  // ✅ Добавленный метод
+        return expectedAnswer;
+    }
+
     public boolean checkAnswer(String answer) {
-        return expectedAnswer.equals(answer);
+        return answer != null && expectedAnswer.trim().equalsIgnoreCase(answer.trim());
     }
 }
