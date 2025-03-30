@@ -14,4 +14,8 @@ public class OpenQuestionCard {
     public Long getId() { return id; }
     public String getQuestionText() { return questionText; }
     public String getExpectedAnswer() { return expectedAnswer; }
+
+    public String getQuestion() {
+        return questionText;
+    }
 }
