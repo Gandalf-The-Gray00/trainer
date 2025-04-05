@@ -21,7 +21,7 @@
 
         <dependency>
             <groupId>ru.sokolov.trainer</groupId>
-            <artifactId>trainer-db-spring-jdbc</artifactId>
+            <artifactId>trainer_feign_client</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
